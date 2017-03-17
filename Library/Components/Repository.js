@@ -9,7 +9,7 @@ export const Repository = (props) => (
       <dd><a href={props.repoUrl}>{props.repoUrl}</a></dd>
       <dt>Description</dt>
       <dd>
-        <Description>{props.description}</Description>
+        <Description ellipsis={80}>{props.description}</Description>
       </dd>
     </dl>
   </div>
