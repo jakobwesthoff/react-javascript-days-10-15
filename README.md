@@ -1,1 +1,1 @@
-# react-javascript-days-10-15
+# react-workshop-content
