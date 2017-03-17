@@ -1,7 +1,4 @@
-import React from "react";
-import {RepositoryList} from '../Components/RepositoryList';
-
-const repos = [
+[
   {
     "id": 1912730,
     "name": "256colors",
@@ -2612,11 +2609,4 @@ const repos = [
     "watchers": 1,
     "default_branch": "master"
   }
-];
-
-export const RepositoryListApp = (props) => (
-  <div className="container">
-    <h1>List of Repositories</h1>
-    <RepositoryList repos={repos} />
-  </div>
-);
+]

@@ -35,11 +35,16 @@ gulp.task("copy:html", function() {
     return gulp.src("*.html")
         .pipe(gulp.dest("Distribution/"));
 });
+gulp.task("copy:data", function() {
+    return gulp.src("Data/**/*", {base: '.'})
+        .pipe(gulp.dest("Distribution/"));
+});
 
 gulp.task("default", function(next) {
     run(
         "clean",
         "copy:html",
+        "copy:data",
         "bundle",
         next
     );

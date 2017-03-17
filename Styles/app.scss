@@ -14,3 +14,11 @@ body, #root {
   width: 100%;
   height: 100%;
 }
+
+.repository {
+  margin-bottom: 2em;
+  
+  dt, dd {
+    padding-top: .6em;
+  }
+}
