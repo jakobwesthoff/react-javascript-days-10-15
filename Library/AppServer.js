@@ -14,6 +14,10 @@ import {StoreRegistry} from "./Stores/StoreRegistry";
 import {RepositoryStore} from "./Stores/RepositoryStore";
 
 GatewayRegistry.set("Repository", new RepositoryGateway());
+
+// Warning: This is not the right way to go in real life
+// There may be race conditions between stores and data,
+// as all requests are using the same store instance
 StoreRegistry.set("Repository", new RepositoryStore());
       
 const indexTemplate = fs.readFileSync(`${__dirname}/../index.html`, 'utf-8');
