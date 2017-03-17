@@ -3,7 +3,7 @@ import {Description} from './Description';
 
 export const Repository = (props) => (
   <div className="repository">
-    <h3><a href={props.htmlUrl}>{props.name}</a></h3>
+    <h3><i className="fa fa-github" aria-hidden="true"></i> <a href={props.htmlUrl}>{props.name}</a></h3>
     <dl className="dl-horizontal">
       <dt>Repository</dt>
       <dd><a href={props.repoUrl}>{props.repoUrl}</a></dd>

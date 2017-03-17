@@ -12,5 +12,4 @@ class DispatcherImpl {
   }
 }
 
-const Dispatcher = new DispatcherImpl();
-export Dispatcher;
+export const Dispatcher = new DispatcherImpl();
