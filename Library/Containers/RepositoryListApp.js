@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {RepositoryList} from '../Components/RepositoryList';
-import {RepositoryStore} from '../Stores/RepositoryStore';
+import {StoreRegistry} from '../Stores/StoreRegistry';
 import {repositoriesReload} from '../Actions/Repository';
 
 export class RepositoryListApp extends Component {
@@ -8,23 +8,23 @@ export class RepositoryListApp extends Component {
     super(props);
     
     this.state = {
-      repositories: RepositoryStore.getRepositories(),
-      repositoriesLoading: RepositoryStore.getIsLoading(),
+      repositories: StoreRegistry.get('Repository').getRepositories(),
+      repositoriesLoading: StoreRegistry.get('Repository').getIsLoading(),
     };
   }
   
   componentDidMount() {
-      RepositoryStore.addChangeListener(this.onRepositoryChange);
+      StoreRegistry.get('Repository').addChangeListener(this.onRepositoryChange);
   }
   
   componentWillUnmount() {
-      RepositoryStore.removeChangeListener(this.onRepositoryChange);
+      StoreRegistry.get('Repository').removeChangeListener(this.onRepositoryChange);
   }
   
   onRepositoryChange = () => {
     this.setState({
-      repositories: RepositoryStore.getRepositories(),
-      repositoriesLoading: RepositoryStore.getIsLoading(),
+      repositories: StoreRegistry.get('Repository').getRepositories(),
+      repositoriesLoading: StoreRegistry.get('Repository').getIsLoading(),
     });
   }
   

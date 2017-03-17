@@ -1,4 +1,4 @@
-class RepositoryGatewayImpl {
+export class RepositoryGateway {
   getRepositories() {
     return fetch('/Data/repos.json')
       .then(result => result.json())
@@ -6,5 +6,3 @@ class RepositoryGatewayImpl {
       .then(document => new Promise(resolve => setTimeout(() => resolve(document), 1500)));
   }
 }
-
-export const RepositoryGateway = new RepositoryGatewayImpl();

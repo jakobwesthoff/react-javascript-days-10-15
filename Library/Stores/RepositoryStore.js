@@ -1,9 +1,11 @@
 import {Store} from '../MinimalFlux/Store';
 import {Dispatcher} from '../MinimalFlux/Dispatcher';
 import {repositoriesUpdated} from '../Actions/Repository';
-import {RepositoryGateway} from '../Gateways/RepositoryGateway';
+import {GatewayRegistry} from '../Gateways/GatewayRegistry';
 
-class RepositoryStoreImpl extends Store {
+export class RepositoryStore extends Store {
+  static HYDRATION_KEY = "RepositoryStore";
+  
   _repositories = [];
   _isLoading = true;
   
@@ -23,8 +25,12 @@ class RepositoryStoreImpl extends Store {
         break;
       }
     });
-    
-    this._reloadRepositories();
+  }
+  
+  _initialize() {
+    return Promise.all([
+      this._reloadRepositories(),
+    ]);
   }
   
   getRepositories() {
@@ -36,9 +42,15 @@ class RepositoryStoreImpl extends Store {
   }
   
   _reloadRepositories() {
-    return RepositoryGateway.getRepositories()
+    const repositoryGateway = GatewayRegistry.get('Repository');
+    return repositoryGateway.getRepositories()
       .then(repositories => repositoriesUpdated(repositories));
   }
+  
+  _getDehydrationProperties() {
+    return [
+      '_repositories',
+      '_isLoading',
+    ];
+  }
 }
-
-export const RepositoryStore = new RepositoryStoreImpl();

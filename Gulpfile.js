@@ -49,3 +49,18 @@ gulp.task("default", function(next) {
         next
     );
 });
+
+gulp.task("isomorphic-serve", function (next) {
+    execLive("/usr/bin/env node ./server.js", next);
+});
+
+gulp.task("isomorphic", function(next) {
+    run(
+        "clean",
+        "copy:html",
+        "copy:data",
+        "bundle",
+        "isomorphic-serve",
+        next
+    );
+});
