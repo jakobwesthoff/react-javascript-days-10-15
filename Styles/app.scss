@@ -1,0 +1,16 @@
+$alertColor: #FF5722;
+$lightAlertColor: #FCA003;
+$emphazizeColor: #FFC107;
+$lightEmphazizeColor: #FFECB3;
+$textColor: #212121;
+$lightTextColor: #727272;
+$disabledTextColor: #B6B6B6;
+
+* {
+    box-sizing: border-box;
+}
+
+body, #root {
+  width: 100%;
+  height: 100%;
+}
